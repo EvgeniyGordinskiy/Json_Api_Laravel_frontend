@@ -1,20 +1,18 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+/* ============
+ * Vue
+ * ============
+ *
+ * Vue.js is a library for building interactive web interfaces.
+ * It provides data-reactive components with a simple and flexible API.
+ *
+ * http://rc.vuejs.org/guide/
+ */
 import Vue from 'vue';
-import * as App from './app';
-// import router from './router';
+
+// eslint-disable-next-line
+import App from './App.vue';
 
 require('./bootstrap');
 
-Vue.config.productionTip = false;
-
-
+// eslint-disable-next-line
 new Vue(App).$mount('#app');
-
-/* eslint-disable no-new */
-// new Vue({
-//   el: '#app',
-//   router,
-//   template: '<App/>',
-//   components: { App },
-// });

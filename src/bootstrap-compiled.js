@@ -13,6 +13,8 @@ var _vue = require('vue');
 
 var _vue2 = _interopRequireDefault(_vue);
 
+require('element-ui/lib/theme-default/index.css');
+
 var _axios = require('axios');
 
 var _axios2 = _interopRequireDefault(_axios);
@@ -41,6 +43,19 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // eslint-disable-next-line
 //  import authService from './app/services/auth';
+var logoutErrors = [40102, // No token provided
+40103];
+
+/* ============
+ * Axios
+ * ============
+ *
+ * Promise based HTTP client for the browser and node.js.
+ * Because Vue Resource has been retired, Axios will now been used
+ * to perform AJAX-requests.
+ *
+ * https://github.com/mzabriskie/axios
+ */
 /* ============
  * Bootstrap File
  * ============
@@ -56,19 +71,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * It provides data-reactive components with a simple and flexible API.
  *
  * http://rc.vuejs.org/guide/
- */
-var logoutErrors = [40102, // No token provided
-40103];
-
-/* ============
- * Axios
- * ============
- *
- * Promise based HTTP client for the browser and node.js.
- * Because Vue Resource has been retired, Axios will now been used
- * to perform AJAX-requests.
- *
- * https://github.com/mzabriskie/axios
  */
 
 
@@ -127,6 +129,23 @@ _axios2.default.interceptors.request.use(function (config) {
   return _promise2.default.reject(error);
 });
 _vue2.default.$http = _axios2.default;
+
+/* ============
+ * Styling
+ * ============
+ *
+ * Require the application styling.
+ * Stylus is used for this boilerplate.
+ *
+ * If you don't want to use Stylus, that's fine!
+ * Replace the stylus directory with the CSS preprocessor you want.
+ * Require the entry point here & install the webpack loader.
+ *
+ * It's that easy...
+ *
+ * http://stylus-lang.com/
+ */
+require('./assets/stylus/app.styl');
 
 /* ============
  * Vuex Router Sync

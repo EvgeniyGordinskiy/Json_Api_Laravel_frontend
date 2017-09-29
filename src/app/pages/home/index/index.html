@@ -1,14 +1,15 @@
-<div class="content home-wrapper">
-  <div class="content-inner">
-    <h1 class="title">
-      Home
-    </h1>
-    <small class="subtitle">
-      {{ $t("static.home.welcomeMsg") }}
-    </small>
-    <div class="buttons homebuttons">
-      <router-link class="buttons_login" :to="{ name: 'auth.login'}"><el-button type="primary">{{ $t('button.enter') }}</el-button></router-link>
-      <router-link class="buttons_login" :to="{ name: 'register.accountSetup'}"><el-button type="primary">{{ $t('button.register') }}</el-button></router-link>
-    </div>
-  </div>
+<div class="content login-wrapper">
+    <div class="content-inner loginBox">
+      <formv
+              :save="login"
+              :form="form"
+              btn-text="Login"
+      >
+      </formv>
+      <el-row class="forgot-password">
+      <router-link class="buttons_login" :to="{ name: 'home'}">New User</router-link>
+      &nbsp;|&nbsp;
+      <router-link class="buttons_login" :to="{ name: 'home'}">Forgot password</router-link>
+     </el-row>
+   </div>
 </div>

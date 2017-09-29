@@ -1,10 +1,6 @@
 <template>
-  <div id="app">
-    <img src="../assets/logo.png">
     <router-view></router-view>
-  </div>
 </template>
-
 <script>
   /* ============
    * Entry Point
@@ -13,8 +9,8 @@
    * The entry point of the application
    */
 
-  import store from './store';
-  import { router } from './../bootstrap';
+  import store from './app/store';
+  import { router } from './bootstrap';
 
   export default {
     data() {
@@ -37,6 +33,8 @@
      * Fires when the app has been mounted
      */
     created() {
+// eslint-disable-next-line
+      console.log('vue');
       // If the user is authenticated,
       // fetch the data from the API
 //      if (this.$store.state.auth.authenticated) {

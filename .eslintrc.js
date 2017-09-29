@@ -1,5 +1,4 @@
 // http://eslint.org/docs/user-guide/configuring
-
 module.exports = {
   root: true,
   parser: 'babel-eslint',
@@ -10,11 +9,11 @@ module.exports = {
     browser: true,
   },
   extends: 'airbnb-base',
-  // required to lint *.vue files
+// required to lint *.vue files
   plugins: [
     'html'
   ],
-  // check if imports actually resolve
+// check if imports actually resolve
   'settings': {
     'import/resolver': {
       'webpack': {
@@ -22,18 +21,18 @@ module.exports = {
       }
     }
   },
-  // add your custom rules here
+// add your custom rules here
   'rules': {
-    // don't require .vue extension when importing
+// don't require .vue extension when importing
     'import/extensions': ['error', 'always', {
       'js': 'never',
       'vue': 'never'
     }],
-    // allow optionalDependencies
+// allow optionalDependencies
     'import/no-extraneous-dependencies': ['error', {
       'optionalDependencies': ['test/unit/index.js']
     }],
-    // allow debugger during development
+// allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
   }
 }
