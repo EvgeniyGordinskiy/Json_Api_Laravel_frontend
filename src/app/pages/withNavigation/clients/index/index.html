@@ -4,11 +4,11 @@
       <h1 class="pageTitle"><i class="fa fa-users" aria-hidden="true"></i>Clients</h1>
     </el-col>
   </el-row>
-  {{timeZones}}
   <div v-if="loading"><br><br></div>
   <div v-else class="flex stretch wrap">
     <cardv
             v-for="client in clients"
+            :key="client.id"
             @click.native="editClient(client)"
     >
 
