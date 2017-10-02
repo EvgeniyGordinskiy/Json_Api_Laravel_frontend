@@ -5,27 +5,22 @@
  * The routes and redirects are defined in this file
  */
 
-
-/**
- * The routes
- *
- * @type {object} The routes
- */
-
 import Home from './pages/home/index/index.vue';
+import Login from './pages/auth/login/login.vue';
+import Register from './pages/register/accountSetup/accountSetup.vue';
 
-const Clients = (resolve) => {
-  require.ensure(['./pages/withNavigation/clients/index/index.vue'], () => {
+const Users = (resolve) => {
+  require.ensure(['./pages/withNavigation/users/index/index.vue'], () => {
   // eslint-disable-next-line
-  resolve(require('./pages/withNavigation/clients/index/index.vue'));
-  }, 'clients');
+  resolve(require('./pages/withNavigation/users/index/index.vue'));
+  }, 'users');
 };
 
 const UserLayout = (resolve) => {
   require.ensure(['./pages/withNavigation/navigation.vue'], () => {
   // eslint-disable-next-line
   resolve(require('./pages/withNavigation/navigation.vue'));
-  }, 'clients');
+  }, 'users');
 };
 
 // eslint-disable-next-line
@@ -39,16 +34,36 @@ export default [
       default: Home,
     },
   },
+  // Login
+  {
+    path: '/login',
+    name: 'login',
+    components: {
+      default: Login,
+    },
+  },
+  // Register
+  {
+    path: '/register',
+    name: 'register',
+    components: {
+      default: Register,
+    },
+  },
   // Components with the navigation wrapper.
   {
     path: '',
     component: UserLayout,
     children: [
       {
-        path: '/clients',
-        name: 'clients',
+        path: '/users',
+        name: 'users',
         components: {
-          default: Clients,
+          default: Users,
+        },
+        // If the user needs to be authenticated to view this page
+        meta: {
+          auth: true,
         },
         children: [
         ],

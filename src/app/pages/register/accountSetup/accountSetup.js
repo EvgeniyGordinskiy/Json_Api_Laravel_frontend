@@ -4,12 +4,10 @@
  *
  * This is the page for registering basic info.
  */
-import { mapGetters, mapActions } from 'vuex';
 import Forms from './../../../utils/forms/forms';
-import store from './../../../store';
-import planService from './../../../services/plans';
-import organizationTypeService from './../../../services/organizationType';
+import Formvue from './../../../components/form/form.vue';
 import authService from './../../../services/auth';
+import timeZones from './../../../mixins/timeZones';
 import accountTransformer from './../../../transformers/custom/accountSetup';
 
 export default {
@@ -20,120 +18,69 @@ export default {
           firstName: {
             value: '',
             type: 'text',
+            label: 'First Name',
+            placeholder: 'First Name'
           },
           lastName: {
             value: '',
             type: 'text',
+            label: 'Last Name',
+            placeholder: 'Last Name'
           },
           email: {
             value: '',
             type: 'email',
+            label: 'Email',
+            placeholder: 'Email'
+          },
+            timeZone: {
+            value: '',
+            type: 'select',
+            label: 'Time Zone',
+            placeholder: 'select time zone'
           },
           password: {
             value: '',
             type: 'password',
+            label: 'Password',
+            placeholder: 'Password'
           },
           passwordConfirmation: {
             value: '',
             type: 'password',
-          },
-          planId: {
-            value: '',
-            type: 'select',
-          },
-          organizationTypeId: {
-            value: '',
-            type: 'select',
-          },
-          terms: {
-            value: '',
-            type: 'term',
+            label: 'Confirm password',
+            placeholder: 'Confirm password'
           },
         }
       ),
     };
   },
 
-  computed: {
-    ...mapGetters({
-      plan: 'chosenPlan',
-      plans: 'allPlans',
-      organizationTypes: 'allOrganizationTypes',
-    }),
-  },
-
-  watch: {
-    /**
-     * Watches state update to inject on Forms class.
-     *
-     * @param  {Object} plans    The plans list.
-     */
-    plans(plans) {
-      this.form.setOptions('planId', plans);
-    },
-
-    /**
-     * Watches state update to inject on Forms class.
-     *
-     * @param  {Object} organizationTypes    The organization types list.
-     */
-    organizationTypes(organizationTypes) {
-      this.form.setOptions('organizationTypeId', organizationTypes);
-    },
-  },
-
-  mounted() {
-    Promise.all([
-      planService.all(),
-      organizationTypeService.all(),
-    ]).then(() => {
-      if (store.state.route.params.id !== undefined) {
-        const planId = parseInt(store.state.route.params.id, 10);
-        this.form.planId = this.plans.filter(plan => (plan.id === planId))[0].id;
-      }
-    });
-  },
-
   methods: {
-    ...mapActions([
-      'setChosenPlan',
-    ]),
 
     /**
      * This method will be called when saving the form.
      */
     register() {
       this.form.loading = true;
-      if (this.form.terms) {
         const account = accountTransformer.send(this.form.data());
-        authService.register(account)
+      console.log(account);
+      authService.register(account)
         .catch((errors) => {
           this.form.loading = false;
           this.form.recordErrors(errors);
         });
-      } else {
-        this.form.loading = false;
-        this.form.recordErrors({
-          terms: [
-            this.$t('static.accountSetup.termsError'),
-          ],
-        });
-      }
-    },
-
-    /**
-     * This method will set the chosen plan on state whenever changes in the form.
-     *
-     * @param {String} name   The name of the attribute changing in the form.
-     */
-    onFormChange(name) {
-      if (name === 'planId') {
-        this.setChosenPlan(this.plans.filter(plan => (plan.id === this.form.planId))[0]);
-      }
     },
   },
+
+    created() {
+        this.form.setOptions('timeZone', this.timeZones);
+    },
 
   components: {
-    VForm: require('./../../../components/form/form.vue'),
+    formv: Formvue,
   },
+    mixins: [
+        timeZones,
+    ],
 };

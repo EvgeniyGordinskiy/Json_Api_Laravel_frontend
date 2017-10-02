@@ -7,6 +7,21 @@ export default {
       type: String,
       required: true,
     },
+    /**
+     * The field name.
+     */
+    label: {
+      type: String,
+      required: false,
+    },
+
+    /**
+     * The field name.
+     */
+    placeholder: {
+      type: String,
+      required: false,
+    },
 
     /**
      * The field type.
@@ -98,7 +113,7 @@ export default {
       disabled={this.disabled}
       onInput={this.onInput(this.name)}
       type={this.type}
-      placeholder={this.translation ? this.$t(`${this.translation}.placeholder`) : this.name}
+      placeholder={this.translation ? this.$t(`${this.translation}.placeholder`) : this.placeholder}
       name={this.name}
     />;
 
@@ -108,7 +123,7 @@ export default {
 
     let label = null;
     if (this.hasLabel) {
-      label = this.translation ? this.$t(`${this.translation}.label`) : this.name;
+      label = this.translation ? this.$t(`${this.translation}.label`) : this.label;
     }
 
     return (

@@ -141,13 +141,14 @@ export default {
         error: this.form.errors.get(field),
         hasLabel: this.hasLabel,
         value: this.form[field],
+        label: this.form['labels'][field],
+        placeholder: this.form['placeholders'][field],
         insideForm: true,
         name: field,
         disabled: this.form.isDisabled(field),
         translation: this.translation ? `${this.translation}.${field}` : null,
       };
       props = Object.assign(props, this.form.getExtraAttr(field));
-
       if (this.form.isHidden(field)) {
         return null;
       }

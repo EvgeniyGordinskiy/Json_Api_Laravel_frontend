@@ -20,6 +20,7 @@ export default class AccountSetupTransformer extends Transformer {
       firstName: accountSetup.first_name,
       lastName: accountSetup.last_name,
       email: accountSetup.email,
+      timeZone: accountSetup.timeZone,
       password: accountSetup.password,
       passwordConfirmation: accountSetup.password_confirmation,
     };
@@ -37,6 +38,7 @@ export default class AccountSetupTransformer extends Transformer {
       first_name: accountSetup.firstName,
       last_name: accountSetup.lastName,
       email: accountSetup.email,
+      timeZone: accountSetup.timeZone,
       password: accountSetup.password,
       password_confirmation: accountSetup.passwordConfirmation,
     };

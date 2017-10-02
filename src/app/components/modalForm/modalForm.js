@@ -1,7 +1,7 @@
 
-import Formvue from './../../../components/form/form.vue';
-import Forms from './../../../utils/forms/forms';
-import timeZones from './../../../../mixins/timeZones';
+import Formvue from './../form/form.vue';
+import Forms from './../../utils/forms/forms';
+import timeZones from './../../mixins/timeZones';
 
 
 export default {
@@ -9,7 +9,7 @@ export default {
     return {
       form: new Forms({
         firstName: {
-          value: '',
+          value: this.user.firstName,
           type: 'text',
         },
         lastName: {
@@ -20,15 +20,15 @@ export default {
           value: '',
           type: 'email',
         },
-        timezone: {
-          value: this.client.timeZone,
-          type: 'select'
+        timeZone: {
+          value: '',
+          type: 'select',
         }
       }),
     };
   },
   props: {
-    client: {
+    user: {
       type: Object,
       required: true,
     },
@@ -37,9 +37,11 @@ export default {
       required: true,
       default: false,
     },
-    onFormChange: {
+    cancelForm: {
       type: Function,
-      required: true,
+    },
+    submit: {
+      type: Function,
     },
   },
 
@@ -56,11 +58,17 @@ export default {
      * @param  {Object} deposits    The all deposits list.
      */
     timeZones(deposits) {
-      this.form.setOptions('timeZones', timeZones);
     },
 
   },
 
+  updated() {
+    this.form.assignData(this.user);
+  },
+
+  created() {
+    this.form.setOptions('timeZone', this.timeZones);
+  },
   components: {
     formv: Formvue,
   },

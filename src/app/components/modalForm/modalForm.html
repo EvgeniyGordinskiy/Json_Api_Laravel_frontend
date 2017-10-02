@@ -1,21 +1,16 @@
 <el-dialog
-        :title = "title"
+        title = "Edit User"
         :visible.sync="show"
         size="tiny"
         :before-close="cancelForm"
        >
     <formv
-            :save="Submit"
+            :save="submit"
             :form="form"
-            btn-text="Login"
+            btn-text="Save"
     >
     </formv>
 <span slot="footer" class="dialog-footer">
-     <el-button
-             type="submit"
-             icon="check"
-             @click="onSubmit(modalForm)"
-     >
-     </el-button>
+
 </span>
 </el-dialog>

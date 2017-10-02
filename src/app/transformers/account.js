@@ -19,8 +19,7 @@ export default class AccountTransformer extends Transformer {
     return {
       userId: account.id,
       email: account.email,
-      password: account.password,
-      passwordConfirmation: account.password_confirmation,
+      timeZone: account.timeZone,
       firstName: account.first_name,
       lastName: account.last_name,
     };
@@ -37,6 +36,7 @@ export default class AccountTransformer extends Transformer {
   static send(account) {
     return {
       email: account.email,
+      timeZone: account.timeZone,
       password: account.password,
       password_confirmation: account.passwordConfirmation,
       first_name: account.firstName,

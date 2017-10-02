@@ -12,6 +12,7 @@ export default class Forms {
     this.successMessage = '';
     this.fields = {};
     this.labels = {};
+    this.placeholders = {};
     this.options = {};
     this.hidden = [];
     this.disabled = [];
@@ -87,6 +88,16 @@ export default class Forms {
   }
 
   /**
+   * This method will be called to set the placeholders.
+   *
+   * @param {String} field  The field to be assigned the label.
+   * @param {String} label  The label to be assigned.
+   */
+  setPlaceholders(field, label) {
+    this.placeholders[field] = label;
+  }
+
+  /**
    * This method will be called to initially assign data and field types.
    *
    * @param {Object} data  The data object with fields and types.
@@ -104,6 +115,7 @@ export default class Forms {
         this.setOptions(key);
       }
       this.setLabels(key, data[key].label);
+      this.setPlaceholders(key, data[key].placeholder);
       return null;
     });
   }

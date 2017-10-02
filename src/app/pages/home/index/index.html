@@ -1,15 +1,12 @@
-<div class="content login-wrapper">
+<div class="content home-wrapper">
     <div class="content-inner loginBox">
-      <formv
-              :save="login"
-              :form="form"
-              btn-text="Login"
-      >
-      </formv>
-      <el-row class="forgot-password">
-      <router-link class="buttons_login" :to="{ name: 'home'}">New User</router-link>
-      &nbsp;|&nbsp;
-      <router-link class="buttons_login" :to="{ name: 'home'}">Forgot password</router-link>
-     </el-row>
-   </div>
+        <img src="../../../../assets/logo.png">
+        <el-row class="">
+            <router-link class="el-button--primary" :to="{ name: 'login'}">Login</router-link>
+        </el-row>
+        <br>
+        <el-row class="">
+            <router-link class="el-button--primary" :to="{ name: 'register'}">New User</router-link>
+        </el-row>
+    </div>
 </div>

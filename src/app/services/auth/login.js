@@ -9,7 +9,7 @@ const success = (token, resolve) => {
   store.dispatch('login', token.token);
   accountService.find().then(() => {
     Vue.router.push({
-      name: 'clients',
+      name: 'users',
     });
     resolve();
   });

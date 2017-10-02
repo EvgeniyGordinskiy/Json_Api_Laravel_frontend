@@ -2,17 +2,17 @@ export default {
   data() {
     return {
       timeZones: [
-        { VI: 'U.S. Virgin Islands' },
-        { VN: 'Vietnam' },
-        { VU: 'Vanuatu' },
-        { WF: 'Wallis and Futuna' },
-        { WS: 'Samoa' },
-        { XK: 'Kosovo' },
-        { YE: 'Yemen' },
-        { YT: 'Mayotte' },
-        { ZA: 'South Africa' },
-        { ZM: 'Zambia' },
-        { ZW: 'Zimbabwe' },
+        { id: 'VI', name: 'U.S. Virgin Islands' },
+        { id: 'VN', name: 'Vietnam' },
+        { id: 'VU', name: 'Vanuatu' },
+        { id: 'WF', name: 'Wallis and Futuna' },
+        { id: 'WS', name: 'Samoa' },
+        { id: 'XK', name: 'Kosovo' },
+        { id: 'YE', name: 'Yemen' },
+        { id: 'YT', name: 'Mayotte' },
+        { id: 'ZA', name: 'South Africa' },
+        { id: 'ZM', name: 'Zambia' },
+        { id: 'ZW', name: 'Zimbabwe' },
       ],
     };
   },

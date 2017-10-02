@@ -6,26 +6,36 @@
  */
 
 import authService from './../../services/auth';
- // import accountService from './../../services/account';
+import { mapGetters } from 'vuex';
 
 export default {
 
-  computed: {
+    computed: {
+      ...mapGetters({
+        account: 'account',
+      }),
 
-    username() {
+      username() {
+        if (this.account.firstName !== undefined) {
+          return `${this.account.firstName} ${this.account.lastName}`;
+        }
+        return '';
+      },
 
-    },
+      email() {
+        if (this.account.email !== undefined) {
+          return `${this.account.email}`;
+        }
+        return '';
+      },
 
-    avatar() {
-
-    },
-
-    /**
-     * This computed property will determine if the admin impersonated this account.
-     */
-    isAdmin() {
-
-    },
+      avatar() {
+        const avatar = this.account.avatar;
+        if (avatar !== undefined && avatar.url !== undefined) {
+          return avatar.url;
+        }
+        return false;
+      },
   },
 
   mounted() {
@@ -37,7 +47,7 @@ export default {
      * This method will logout the user.
      */
     logout() {
-      authService.logout();
+     authService.logout();
     },
   },
 };
