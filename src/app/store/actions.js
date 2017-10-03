@@ -25,3 +25,17 @@ export const logout = ({ commit }) => {
 export const checkAuthentication = ({ commit }) => {
   commit(types.CHECK_AUTHENTICATION);
 };
+
+
+// Users
+export const fetchUsers = ({ commit }, { users, pagination }) => {
+  commit(types.FETCH_USERS, { users, pagination });
+};
+
+export const fetchAllUsers = ({ commit }, users) => {
+  commit(types.FETCH_ALL_USERS, users);
+};
+
+export const resetUsers = ({ commit }) => {
+  commit(types.RESET_USERS);
+};

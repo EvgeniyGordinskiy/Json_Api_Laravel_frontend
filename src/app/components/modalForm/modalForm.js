@@ -1,36 +1,18 @@
 
 import Formvue from './../form/form.vue';
-import Forms from './../../utils/forms/forms';
 import timeZones from './../../mixins/timeZones';
 
 
 export default {
   data() {
     return {
-      form: new Forms({
-        firstName: {
-          value: this.user.firstName,
-          type: 'text',
-        },
-        lastName: {
-          value: '',
-          type: 'text',
-        },
-        email: {
-          value: '',
-          type: 'email',
-        },
-        timeZone: {
-          value: '',
-          type: 'select',
-        }
-      }),
+
     };
   },
   props: {
-    user: {
+    form: {
       type: Object,
-      required: true,
+      required: false,
     },
     show: {
       type: Boolean,
@@ -42,6 +24,10 @@ export default {
     },
     submit: {
       type: Function,
+    },
+    title: {
+      type: String,
+      required: false,
     },
   },
 
@@ -62,16 +48,11 @@ export default {
 
   },
 
-  updated() {
-    this.form.assignData(this.user);
-  },
 
-  created() {
-    this.form.setOptions('timeZone', this.timeZones);
-  },
   components: {
     formv: Formvue,
   },
+
   mixins: [
     timeZones,
   ],

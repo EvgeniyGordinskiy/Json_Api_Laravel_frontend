@@ -135,6 +135,19 @@ export default class Forms {
   }
 
   /**
+   * This method will be called to reset all fields.
+   *
+   */
+  resetFields() {
+    Object.keys(this.fields).map((field) => {
+      if (this[field] !== undefined) {
+        this[field] = '';
+      }
+      return null;
+    });
+  }
+
+  /**
    * This method will be called to retrieves the form data.
    */
   data() {

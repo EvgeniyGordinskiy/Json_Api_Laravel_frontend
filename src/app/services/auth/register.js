@@ -7,7 +7,7 @@ const success = (token, resolve) => {
   store.dispatch('login', token.token);
   accountService.find();
   Vue.router.push({
-    name: 'clients',
+    name: 'users',
   });
   resolve();
 };

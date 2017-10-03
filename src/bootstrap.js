@@ -122,6 +122,7 @@ import VuexRouterSync from 'vuex-router-sync';
 import store from './app/store';
 
 store.dispatch('checkAuthentication');
+store.dispatch('getAccount', {});
 
 /* ============
  * Vue Router

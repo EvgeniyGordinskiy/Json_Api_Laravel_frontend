@@ -15,6 +15,7 @@ import * as getters from './getters';
 // Modules
 import auth from './modules/auth';
 import profile from './modules/profile';
+import users from './modules/users';
 
 Vue.use(Vuex);
 
@@ -32,5 +33,6 @@ export default new Vuex.Store({
   modules: {
     auth,
     profile,
+    users,
   },
 });
