@@ -62,14 +62,17 @@ export default {
               firstName: {
                   value: '',
                   type: 'text',
+                  placeholder: 'First Name'
               },
               lastName: {
                   value: '',
                   type: 'text',
+                  placeholder: 'Last Name'
               },
               email: {
                   value: '',
                   type: 'email',
+                  placeholder: 'Email'
               },
               timeZone: {
                   value: '',
@@ -82,7 +85,7 @@ export default {
           user: {},
           titleEdit: 'Edit User',
           titleCreate: 'Create User',
-          dialogFormVisible: true
+          dialogFormVisible: false
       };
   },
 
@@ -139,7 +142,7 @@ export default {
                   this.loading = false;
               })
               .catch((errors) => {
-                  this.form.loading = false;
+                  this.form.loading = true;
                   this.form.recordErrors(errors);
               });
       },
@@ -158,7 +161,8 @@ export default {
                   this.loading = false;
               })
               .catch((errors) => {
-                console.log(errors);
+                  this.editForm.loading = true;
+                  this.editForm.recordErrors(errors);
               });
       },
 
